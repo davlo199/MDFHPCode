@@ -36,7 +36,7 @@ Estimation of the truncated exponential parameter estimates is done by using the
 
 ## Residual Analysis
 
-Calculation of the transformed time residual process for the ETAS model is detailed in D. harte's cited CRAN package "PtProcess".
+Calculation of the transformed time residual process for the ETAS model is detailed in D. Harte's cited CRAN package "PtProcess".
 
 Calculation of the transformed time residual process for the MDFHP model is done in the "MultiDimResiduals.m" script.
 
