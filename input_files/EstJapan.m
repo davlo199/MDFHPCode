@@ -6,7 +6,7 @@ CSV=1;
 maxFval=2000;
 dataname='Japan';
 Nrand=200;
-
+batchsize=1;
 MANx0=[]; %For manually using starting values
 
 PAR=2; %PAR=0 for running on a nonparallel computer.
