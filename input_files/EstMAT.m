@@ -10,8 +10,8 @@ Nrand=200;
 MANx0=[]; %For manually using starting values
 
 PAR=2; %PAR=0 for running on a nonparallel computer.
-A=2600;
-B=4100;
+A=1259;
+B=5393;
 
 NRep=1000;
 
