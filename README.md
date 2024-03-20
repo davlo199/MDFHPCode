@@ -2,7 +2,7 @@
 Code and data used for the results in "A Multidimensional Fractional Hawkes Process for Earthquakes". 
 
 ## Compiling the C++ code
-Most scripts incorporate a C++ mex file for the "ml.m" function. The file "LTInversionArray.mex" **check correct name** should be sufficient to run the .mex file. If not follow the instructions.
+Most scripts incorporate a C++ mex file for the "ml.m" function. The file "LTInversionArray.mex" **check correct name & add in LTInversion.cpp file** should be sufficient to run the .mex file. If not follow the instructions.
 
 Some parts of the code have been re-implemented in C++ and you may need to run
 ```
