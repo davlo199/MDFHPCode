@@ -2,7 +2,7 @@
 Code and data used for the results in "A Multidimensional Fractional Hawkes Process for Earthquakes". 
 
 ## Compiling the C++ code
-Most scripts incorporate a C++ mex file for the "ml.m" function. The file "LTInversionArray.mex" **check correct name & add in LTInversion.cpp file** should be sufficient to run the .mex file. If not follow the instructions.
+Most scripts incorporate a C++ mex file for the "ml.m" function. The file "LTInversionArray.mex" should be sufficient to run the .mex file. If not follow the instructions.
 
 Some parts of the code have been re-implemented in C++ and you may need to run
 ```
@@ -25,16 +25,12 @@ The function "MLapp.m" incorporates a Poincare asymptotic expansion for large ti
 Two .csv files contain the data used from Japan and the Middle America Trench. These are available publicly from [USGS quake search](https://earthquake.usgs.gov/earthquakes/search/).
 For convenience they are provided here. The Japan data set is contained in the file "Japan.csv" and the Middle America Trench data set is contained in the file "MAT7623.csv".
 
-## Running the scripts
-
-**Something about directories and an example slurm script**
-
 ## Parameter Estimation
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
 To estimate the parameters for Japan or Middle America Trench data sets use the input files being "EstJapan.m" or "EstMAT.m" respectively.
 
 Estimation the ETAS model's parameter was done using "FitTimeETAS.R" and follows D. Harte closely in their cited guide. 
-To run it **emter in slurm script or command line**, enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). 
+To run it enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). 
 
 Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function.
 
