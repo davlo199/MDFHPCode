@@ -25,6 +25,10 @@ The function "MLapp.m" incorporates a Poincare asymptotic expansion for large ti
 Two .csv files contain the data used from Japan and the Middle America Trench. These are available publicly from [USGS quake search](https://earthquake.usgs.gov/earthquakes/search/).
 For convenience they are provided here. The Japan data set is contained in the file "Japan.csv" and the Middle America Trench data set is contained in the file "MAT7623.csv".
 
+## Running the scripts
+
+**Something about directories etc**
+
 ## Parameter Estimation
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
 To estimate the parameters for Japan or Middle America Trench data sets use the input files being "EstJapan.m" or "EstMAT.m" respectively.
