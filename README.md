@@ -27,7 +27,7 @@ For convenience they are provided here. The Japan data set is contained in the f
 
 ## Running the scripts
 
-**Something about directories etc**
+**Something about directories and an example slurm script**
 
 ## Parameter Estimation
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
