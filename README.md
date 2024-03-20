@@ -34,7 +34,7 @@ Parameter estimation for the MDFHP model is performed by using the "MDFHIntensit
 To estimate the parameters for Japan or Middle America Trench data sets use the input files being "EstJapan.m" or "EstMAT.m" respectively.
 
 Estimation the ETAS model's parameter was done using "FitTimeETAS.R" and follows D. Harte closely in their cited guide. 
-To run it, enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M_0", "A" and "B"). 
+To run it, enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). 
 
 Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function.
 
