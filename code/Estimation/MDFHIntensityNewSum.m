@@ -121,7 +121,7 @@ finalP(IDX)=exp(TransEst(IDX));
 finalP(~IDX)=exp(TransEst(~IDX))./(1+exp(TransEst(~IDX)));
 finalP=reshape(finalP,Nband,ADD+4*Nband);
 BestMinlik=min(MLLik(:,end));
-
+%MLLik(Nparam+1:2*Nparam) are the estimated standard errors. 
 basefilename=strcat(dataname,'MDFHP','Nband',sprintf('%d',Nband),'A',sprintf('%d',A),'B',sprintf('%d',B));
 
 endtime=datetime("now");
