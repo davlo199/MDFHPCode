@@ -99,7 +99,7 @@ On desktop computer (used for residual analysis), MATLAB 2022B.
 
 ## Manuscript
 
-The full latex file is availa
+The "manuscript" directory contains the submitted unblinded manuscript pdf, along with a .zip file as compiled by latex.  
 
 ## Comments and/or Questions
 These should be directed to the corresponding authour Louis Davis (davislrs2000@gmail.com).
