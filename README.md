@@ -48,8 +48,8 @@ For the MDFHP model $p_i$ is computed in the script "PredCapMDFHP.m" with the in
 
 Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m".
 
-
-
+## Comments or questions
+These should be directed to the corresponding authout Louis Davis (davislrs2000@gmail.com).
 
 
 
