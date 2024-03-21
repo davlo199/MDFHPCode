@@ -1,8 +1,8 @@
-# MDFHPCode
+# Multidimensional Fractional Hawkes Process Code, Data and Results
 Code and data used for the results in "A Multidimensional Fractional Hawkes Process for Earthquakes". 
 
 ## Compiling the C++ code
-Most scripts incorporate a C++ mex file for the "ml.m" function. The file "LTInversionArray.mex" should be sufficient to run the .mex file. If not follow the instructions.
+Most scripts incorporate a C++ mex file for the "ml.m" function, all of which are contained in the directory "code/MitLef". The file "LTInversionArray.mex" should be sufficient to run the .mex file. If not follow the instructions.
 
 Some parts of the code have been re-implemented in C++ and you may need to run
 ```
@@ -22,10 +22,12 @@ If you cannot compile the C++ code, in line 100 of "ml.m" set cpp_code=0;
 The function "MLapp.m" incorporates a Poincare asymptotic expansion for large time, and a Power series approximation for small time.
 
 ## Data Files
-Two .csv files contain the data used from Japan and the Middle America Trench. These are available publicly from [USGS quake search](https://earthquake.usgs.gov/earthquakes/search/).
+Two .csv files contain the data used from Japan and the Middle America Trench within the "data" directory. These are available publicly from [USGS quake search](https://earthquake.usgs.gov/earthquakes/search/).
 For convenience they are provided here. The Japan data set is contained in the file "Japan.csv" and the Middle America Trench data set is contained in the file "MAT7623.csv".
 
 ## Parameter Estimation
+Scripts for parameter estimation are contained in the "code/ParamEst" directory.
+
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
 To estimate the parameters for Japan or Middle America Trench data sets use the input files being "EstJapan.m" or "EstMAT.m" respectively.
 
@@ -35,18 +37,24 @@ To run it enter in the information in the input_files for the Japan or Middle Am
 Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function.
 
 ## Residual Analysis
+Scripts for residual analysis are contained in the "code/Resid&Pred" directory.
 
 Calculation of the transformed time residual process for the ETAS model is detailed in D. Harte's cited CRAN package "PtProcess".
 
 Calculation of the transformed time residual process for the MDFHP model is done in the "MultiDimResiduals.m" script.
 
 ## Information Gain
+Scripts for information gain are contained in the "code/Resid&Pred" directory.
 
 For the ETAS model $p_i$ is computed in the script "PredCapETASMarked.m" with the input file "PredJapan.m" or "PredMat.m" for the Japan or Middle America Trench data sets respectively.
 
 For the MDFHP model $p_i$ is computed in the script "PredCapMDFHP.m" with the input file "PredJapan.m" or "PredMat.m" for the Japan or Middle America Trench data sets respectively.
 
 Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m".
+
+## Output files
+**Say something about the output files**
+
 
 ## Comments or questions
 These should be directed to the corresponding authout Louis Davis (davislrs2000@gmail.com).
