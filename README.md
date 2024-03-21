@@ -29,7 +29,8 @@ For convenience they are provided here. The Japan data set is contained in the f
 Scripts for parameter estimation are contained in the "code/ParamEst" directory.
 
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
-To estimate the parameters for Japan or Middle America Trench data sets use the input files being "EstJapan.m" or "EstMAT.m" respectively.
+Estimating the parameters for Japan or Middle America Trench data sets was done in two stages. First use the input files being "EstJapan.m" or "EstMAT.m" respectively with the tolerances in line 172 of "MDFHIntensityNewSum.m" set to 1e-3.
+We then use the rough minima again, with the tolerances in line 172 set to 1e-6, and change the input file values "PAR=0", "Nrand=1", and MANx0 equal to the transformed output of the first step (i.e. the unconstrained optimised parameter values which is the variable "TransPar"). This saves computation time. Alternatively, the code as presented in this repository will return the more accurate minima although the computational expense is greatly increased.
 
 Estimation the ETAS model's parameter was done using "FitTimeETAS.R" and follows D. Harte closely in their cited guide. 
 To run it enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). 
@@ -50,14 +51,38 @@ For the ETAS model $p_i$ is computed in the script "PredCapETASMarked.m" with th
 
 For the MDFHP model $p_i$ is computed in the script "PredCapMDFHP.m" with the input file "PredJapan.m" or "PredMat.m" for the Japan or Middle America Trench data sets respectively.
 
-Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m".
+Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m" which is run by loading the output files from "PredCapETASMarked.m" or "PredCapMDFHP.m".
 
 ## Output files
-**Say something about the output files**
+The "output" directory is split into three subdirectories: "Estimates","Resid" and "Pred" for the output files of the second run of the parameter estimation procedure, transformed residual processes and information gain outputs respectively.
+The follow table includes the file name and a brief description of its contents. 
 
+| File Name | Description |
+| --- | --- |
+| **ETAS JAP**  |   |
+| **ETAS MAT**  |   |
+| **MDHP etc**  |   |
+| Japan55SP1.csv | Transformed time residual process for subprocess 1 of the MDFHP5.5 fitted to the Japan data set.|
+| Japan55SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP5.5 fitted to the Japan Trench data set.|
+| Japan575SP1.csv | Transformed time residual process for subprocess 1 of the MDFHP5.75 fitted to the Japan data set.|
+| Japan575SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP5.75 fitted to the Japan Trench data set.|
+| Japan6SP1.csv | Transformed time residual process for subprocess 1 of the MDFHP6 fitted to the Japan data set.|
+| Japan6SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP6 fitted to the Japan Trench data set.|
+| MAT435SP1.csv | Transformed time residual process for subprocess 1 of the MDFHP4.35 fitted to the Middle America Trench data set.|
+| MAT435SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP4.35 fitted to the Middle America Trench data set.|
+| **Rest of Resid** | |
+| | |
+
+
+## Versions
+R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+On Mahuika HPC (used for data estimation and predictive performance), MATLAB 2020B.
+On desktop computer (used for residual analysis), MATLAB 2022 B.
 
 ## Comments or questions
-These should be directed to the corresponding authout Louis Davis (davislrs2000@gmail.com).
+These should be directed to the corresponding authour Louis Davis (davislrs2000@gmail.com).
 
 
 
