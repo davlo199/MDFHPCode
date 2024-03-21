@@ -132,6 +132,9 @@ save(basefilename)
 end
 
 function OUT=LOOPx0minimise(nRand,batchsize,Nband,DiscEvents,renewal,M0,Events,TF,MANx0,maxFval)
+%Par matrix has dimensions Nband times 1+4*Nband. The first column is the background rate so Par(1,1) is lambda_{01}, Par(2,1) is lambda_{02} etc.
+%Then the rest is 4 Nband times Nband matrices with entries theta_{ij} corresponding to that parameter. The matrices from left to right have the order, alpha, gamma, beta, c.
+% For example Par(1,2) is alpha_{11}, Par(2,2) is alpha_{21} etc.
     for run=1:batchsize
         nRun=nRand*batchsize+run;
         rng(nRun)
@@ -155,7 +158,7 @@ function OUT=LOOPx0minimise(nRand,batchsize,Nband,DiscEvents,renewal,M0,Events,T
         end
         else
 
-        Par=MANx0+0.1*randn(size(MANx0));
+        Par=MANx0;
 
         end
         Parameters0=reshape(Par,1,numel(Par));
