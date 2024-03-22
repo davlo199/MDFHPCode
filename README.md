@@ -58,6 +58,10 @@ For the MDFHP model $p_i$ is computed in the script "PredCapMDFHP.m" with the in
 
 Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m" which is run by loading the output files from "PredCapETASMarked.m" or "PredCapMDFHP.m".
 
+## Plotting Scripts
+
+**Do from laptop/ bring in**
+
 ## Output files
 The "output" directory is split into three subdirectories: "Estimates","Resid" and "Pred" for the output files of the second run of the parameter estimation procedure, transformed residual processes and information gain outputs respectively.
 The follow table includes the file name and a brief description of its contents. 
