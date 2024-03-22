@@ -1,4 +1,5 @@
 hold on
+%Computes residual process integral as done in "MDFHIntensityNewSum.m"
 if renewal==1||renewal==2
     ADD=2;
 else
