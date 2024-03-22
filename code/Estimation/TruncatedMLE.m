@@ -25,7 +25,7 @@ Events=Events(A:B);
 MAG=MAG(A:B);
 Events=Events-Events(1);
 
-
+%Assigning events to a subprocess by magnitude row 1 is event time for subprocess 1, etc. row Nband+1 is magntiude for events in subprocess 1 etc.
 DiscEvents=zeros(2*Nband,length(Events)+1);
 for i=1:(Nband)
 idx2=MAG>=MagVec(i+1)&MAG<MagVec(i);
@@ -55,6 +55,7 @@ end
 
 
 function OUT=BMAG(M0,MAG,x,MMax)
+%Unconstrained log-likelihood for a truncated exponential distribution
 B=exp(x(1));
 N=length(MAG);
 OUT=-(N*log(B)-B*sum(MAG-M0)-N*log(1-exp(-B*(MMax-M0))));
