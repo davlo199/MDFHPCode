@@ -3,8 +3,8 @@ run(input_file)
 %% Formulate Earthquake data and check data
 Nband=length(MagVec)-1;
 
-%First column is a, then b, then matrix of alpha_ij, beta_ij, gamma_ij as in model same order
 
+%Load in the data and turn into numeric
 if CSV==1
 Data=strcat(dataname,'.csv');
 Points=readtable(Data);
@@ -106,7 +106,7 @@ end
 
 
 
-
+% Find the trial with the smallest negative loglikelihood
 jdx=MLLik(:,end)==min(MLLik(:,end));
 if sum(jdx)>1
 AA=MLLik(jdx,:);
@@ -115,6 +115,8 @@ else
 TransEst=MLLik(jdx,:);
 TransEst=TransEst(1:totalParam);
 end
+
+%Return parameters to standard scale
 
 IDX=[true(Nband,ADD),false(Nband),true(Nband),false(Nband),true(Nband)];
 finalP(IDX)=exp(TransEst(IDX));
@@ -135,6 +137,7 @@ function OUT=LOOPx0minimise(nRand,batchsize,Nband,DiscEvents,renewal,M0,Events,T
 %Par matrix has dimensions Nband times 1+4*Nband. The first column is the background rate so Par(1,1) is lambda_{01}, Par(2,1) is lambda_{02} etc.
 %Then the rest is 4 Nband times Nband matrices with entries theta_{ij} corresponding to that parameter. The matrices from left to right have the order, alpha, gamma, beta, c.
 % For example Par(1,2) is alpha_{11}, Par(2,2) is alpha_{21} etc.
+%Inputting random or deterministic unconstrained parameters
     for run=1:batchsize
         nRun=nRand*batchsize+run;
         rng(nRun)
@@ -162,6 +165,7 @@ function OUT=LOOPx0minimise(nRand,batchsize,Nband,DiscEvents,renewal,M0,Events,T
 
         end
         Parameters0=reshape(Par,1,numel(Par));
+        
         [MLE,Llhood,SE]=MDFHPMinimiser(Parameters0,Nband,DiscEvents,renewal,M0,Events,TF,maxFval);
         SE=SE.';
         OUT=[MLE,SE,Llhood];       
@@ -172,14 +176,16 @@ end
 %Minimisation
 function [MLE,Llhood,SE]=MDFHPMinimiser(Parameters0,Nband,DiscEvents,renewal,M0,Events,TF,maxFval)
 
+
 options=optimoptions('fminunc','MaxFunctionEvaluations',maxFval,'Display','iter','StepTolerance',1e-6,'OptimalityTolerance',1e-6);
 
-%[MLE,Llhood,~,~,~,hessian]=fminunc(@(Parameters)MDFHnegLogLik(Nband,DiscEvents,renewal,Parameters,M0,Events,TF),Parameters0,options); 
-[MLE,Llhood,~,~,~,~]=fminunc(@(Parameters)MDFHnegLogLik(Nband,DiscEvents,renewal,Parameters,M0,Events,TF),Parameters0,options); 
-hessian=eye(length(MLE));
+[MLE,Llhood,~,~,~,hessian]=fminunc(@(Parameters)MDFHnegLogLik(Nband,DiscEvents,renewal,Parameters,M0,Events,TF),Parameters0,options); 
+%[MLE,Llhood,~,~,~,~]=fminunc(@(Parameters)MDFHnegLogLik(Nband,DiscEvents,renewal,Parameters,M0,Events,TF),Parameters0,options); 
+%hessian=eye(length(MLE));
 SE=sqrt(diag(inv(hessian)));
 end
 %% Likelihood function
+%First backtransforming parameters
 function neglogLike=MDFHnegLogLik(Nband,DiscEvents,renewal,Parameters,M0,Events,TF)
 if renewal~=1&&renewal~=2 %Background rate is Poisson
 Parameters=reshape(Parameters,[Nband,1+4*Nband]);
@@ -195,12 +201,13 @@ TransPar(~IDX)=exp(Parameters(~IDX))/(1+exp(Parameters(~IDX)));
 TransPar=reshape(TransPar,Nband,2+4*Nband);
 end
 logSUM=0;
+%Calculating sum of log intensities across the subprocess
 for KK=1:Nband
 logSUM=logSUM+sum(log(MDFHazardRate(Nband,DiscEvents(KK,2:DiscEvents(KK,1)+1),DiscEvents,renewal,TransPar,M0,KK)));
 end
 
 
-
+% Computing the integrals
     BackInt=Events(end).*(sum(TransPar(:,1)));
 
 CompInt=BackInt+ExciteInt(Nband,DiscEvents,TransPar,M0,TF,renewal); 
@@ -219,6 +226,7 @@ else
 end
 for I=1:Nband
     for J=1:Nband
+    %Looping through to calculate the integral for the contribution by each subprocess.
         alpha=Parameters(I,J+ADD);
         gamma=Parameters(I,J+ADD+Nband);
         beta=Parameters(I,J+ADD+2*Nband);
@@ -229,7 +237,7 @@ for I=1:Nband
             continue
         else
         betaVec=zeros(size(D));
-
+        %Implementing Mittag-Leffler approximations
         cTime=(c.*(TF-D)).^beta;
 
         Intdx1=cTime>=10; %Events to use Poin Asym App.
@@ -276,7 +284,7 @@ for I=1:Nband
 end
 end
 function Hazard=MDFHazardRate(Nband,t,DiscEvents,renewal,Parameters,M0,I)
-%Calculates MDFHazrdrate at vector time t in I band
+%Calculates MDFHazrdrate at vector time t in I^th band
 
 Hazard=BackLamb(t,DiscEvents,renewal,Parameters,I)+ExcitedIntensity(Parameters,DiscEvents,M0,t,Nband,renewal,I);
 
@@ -291,7 +299,7 @@ function ExcitationMatrix=ExcitedIntensity(Parameters,DiscEvents,M0,t,Nband,rene
 
 ExcitationMatrix=zeros(1,length(t));
 %Events can be some general time but only need matrix at event times, 
-
+%Calculates the intensity at the time vector t
     for J=1:Nband
         alpha=Parameters(I,J+ADD);
         gamma=Parameters(I,J+ADD+Nband);
@@ -316,6 +324,8 @@ function Excited=FracExp(D,t,MAG,beta,gamma,c,M0)
 %Events is time of all in catalogue
 %magnitude
 %beta and gamma parameters for entries
+
+%Excited portion of the intensity
 if length(D)~=length(MAG)
 error('MAG corresponds to events in first argument D')
 end
@@ -331,7 +341,7 @@ MAT(1:sdx,j)=t(j)-D(1:sdx);
 end
 end
 IDX2=MAT~=0;
-
+%Mittag Leffler approximations
 ZMat=(c.*MAT(IDX2)).^beta;
 
 ZMat2=MAT(IDX2); 
