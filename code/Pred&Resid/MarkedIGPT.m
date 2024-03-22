@@ -28,13 +28,13 @@ for i=1:length(PPois)
     end
 end
 
-IG=zeros(2,NMagInt)';
+IG=zeros(2,NMagInt)'; %Information gain first column is for intervals when events occur, second is for when they don't. Rows k corresponds to magnitude class k-1. 
 for i1=1:NMagInt
 
 ptmp=P(i1,:);
 ppoistmp=PPois(i1,:);
 XlogTmp=Xlogic(i1,:);
-
+%Computing IG
 IG(i1,1)=sum(log(ptmp(XlogTmp)./ppoistmp(XlogTmp)));
 IG(i1,2)=sum(log((1-ptmp(~XlogTmp))./(1-ppoistmp(~XlogTmp))));
 end
