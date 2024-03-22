@@ -26,7 +26,7 @@ Events=Events(A:B);
 MAG=MAG(A:B);
 Events=Events-Events(1);
 
-
+%Assigning events to subprocesses
 DiscEvents=zeros(2*Nband,length(Events)+1);
 for i=1:(Nband)
 idx2=MAG>=MagVec(i+1)&MAG<MagVec(i);
@@ -86,8 +86,7 @@ function OUT = SimPrediction(finalP,M0,Events,MAG,T0,TF,Nband,MagVec,magparam)
 %Events and MAG constitute history, (T0,TF] is time interval we want to
 %predict in
 %Rest are parameters in the simulation
-%Only need to determine whether there is one point in (T0,TF] since
-%considering unmarked case.
+
 
 renewal=0; %Background rate is Poisson. DO NOT USE any other settings
 t = T0;
@@ -106,7 +105,7 @@ DiscEvents(i,1)=sum(idx2);
 DiscEvents(i+Nband,1)=sum(idx2);
 end
 
-%
+%Thinning
 while t<=TF
 
     intTmp=MDFHazardRate(Nband,t+epsilon,DiscEvents,renewal,finalP,M0);
@@ -144,7 +143,7 @@ end
 end
 
 function OUT=truncmag(magparam,MagVec,ii1)
-
+%Simulation of truncated exponential RV
 Bmag=magparam(ii1);
 MMin=MagVec(ii1+1);
 MMax=MagVec(ii1);
@@ -162,7 +161,7 @@ end
 end
 
 
-
+%Calulcation of intensity for use in thinning algorithm. Same as in "MDFHIntensityNewSum.m"
 function lambda0=BackLamb(Nband,t,DiscEvents,renewal,Parameters)
 lambda0=zeros(Nband,length(t));
 if renewal==1
