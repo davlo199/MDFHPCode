@@ -53,7 +53,8 @@ else
     Events=Events-Events(1);
 end
 start=datetime("now");
-%
+
+%Assigning events to a subprocess by magnitude row 1 is event time for subprocess 1, etc. row Nband+1 is magntiude for events in subprocess 1 etc.
 DiscEvents=zeros(2*Nband,length(Events)+1);
 for i=1:(Nband)
 idx2=MAG>=MagVec(i+1)&MAG<MagVec(i);
