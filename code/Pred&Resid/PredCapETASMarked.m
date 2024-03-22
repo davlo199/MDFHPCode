@@ -69,10 +69,10 @@ function OUT=PredictionLoop(mu0, A, del, p, M0, cE, Events, MAG, NRep, kInt, Pre
     Prop=zeros(length(MAGInt)-1,NRep);
         for L=1:NRep
         [~,magout]=SimPrediction(mu0, A, del, p, M0, cE,TmpEvent,TmpMAG,T0,TF,bMag,MAGInt);
-        Prop(:,L)=histcounts(magout,MAGInt);
+        Prop(:,L)=histcounts(magout,MAGInt); %Counts of simulations with an event in a magnitude class
         end
-        Prop(Prop~=0)=1;
-        OUT=sum(Prop,2)/NRep;
+        Prop(Prop~=0)=1; 
+        OUT=sum(Prop,2)/NRep; %Proportion of simulations with an event in a magnitude class.
 
 end
 
@@ -81,6 +81,7 @@ function [SimTimeOut,magout] = SimPrediction(mu0, A, del, p, M0, cE,Events,MAG,T
 %Events and MAG constitute history, (T0,TF] is time interval we want to
 %predict in
 %Rest are parameters in the simulation
+%Standard thinning algorithm for the ETAS model
 
     t = T0;
     epsilon = 1e-10;
@@ -115,6 +116,7 @@ function [SimTimeOut,magout] = SimPrediction(mu0, A, del, p, M0, cE,Events,MAG,T
 end
 
 function OUT=TruncMag(bMag,MAGInt)
+%Simulates magnitude from a truncated exponential distribution.
 OUT=[];
 while isempty(OUT)
     mag=exprnd(1/bMag,1,1)+MAGInt(1);
