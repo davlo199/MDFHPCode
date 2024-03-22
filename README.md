@@ -40,7 +40,7 @@ Estimation of the truncated exponential parameter estimates is done by using the
 ## Residual Analysis
 Scripts for residual analysis are contained in the "code/Resid&Pred" directory.
 
-Calculation of the transformed time residual process for the ETAS model is detailed in D. Harte's cited CRAN package "PtProcess". As an example, after loading in the output file "MATETAStimefit.Rdata" into R use
+Calculation of the transformed time residual process for the ETAS model is detailed in D. Harte's cited CRAN package "PtProcess". As an example, after loading in the output file "MATETAStimefit.RData" into R use
 ```
 library("PtProcess")
 resid<-residuals(x0)
@@ -68,9 +68,9 @@ The follow table includes the file name and a brief description of its contents.
 
 | File Name | Description |
 | --- | --- |
-|JapanETAStimefit.Rdata| Output of "ETASTimeFit.R" for the Japan data set (once the fitted models were selected by hand). |
+|JapanETAStimefit.RData| Output of "ETASTimeFit.R" for the Japan data set (once the fitted models were selected by hand). |
 | Japan55MDFHP.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP5.5 model fitted to the Japan data set.|
-| MATETAStimefit.Rdata  | Output of "ETASTimeFit.R" for the Middle America Trench data set (once the fitted models were selected by hand).  |
+| MATETAStimefit.RData  | Output of "ETASTimeFit.R" for the Middle America Trench data set (once the fitted models were selected by hand).  |
 | **MDFHP estimate files etc**  |   |
 | Japan55SP1.csv | Transformed time residual process for subprocess 1 of the MDFHP5.5 fitted to the Japan data set.|
 | Japan55SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP5.5 fitted to the Japan Trench data set.|
@@ -80,15 +80,18 @@ The follow table includes the file name and a brief description of its contents.
 | Japan6SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP6 fitted to the Japan Trench data set.|
 | MAT435SP1.csv | Transformed time residual process for subprocess 1 of the MDFHP4.35 fitted to the Middle America Trench data set.|
 | MAT435SP2.csv | Transformed time residual process for subprocess 2 of the MDFHP4.35 fitted to the Middle America Trench data set.|
-|**Use laptop to put in other residual processes for MAT** | |
-|JapanMDFHP55PredCap.mat |Output of "MarkedIGPT.m" for the MDFHP5.5 fitted to the Japan data set. |
-|JAPANetasIGPT.mat |Output of "MarkedIGPT.m" for the ETAS fitted to the Japan data set. |
+| MAT455SP1.csv| Transformed time residual process for subprocess 1 of the MDFHP4.55 fitted to the Middle America Trench data set.|
+| MAT455SP2.csv| Transformed time residual process for subprocess 2 of the MDFHP4.55 fitted to the Middle America Trench data set.|
+| MAT475SP1.csv| Transformed time residual process for subprocess 1 of the MDFHP4.75 fitted to the Middle America Trench data set.|
+| MAT475SP2.csv| Transformed time residual process for subprocess 2 of the MDFHP4.75 fitted to the Middle America Trench data set.|
+|JapanMDFHP55PredCap.mat |Output of "MarkedIGPT.m" for the MDFHP5.5 fitted to the Japan data set. **UPLOAD**|
+|JAPANetasIGPT.mat |Output of "MarkedIGPT.m" for the ETAS fitted to the Japan data set. **UPLOAD**|
 | | |
 | | |
 |MAT435mdfhpIGPT.mat | Output of "MarkedIGPT.m" for the MDFHP4.35 fitted to the Middle America Trench data set. |
 |MATetasIGPT.mat |Output of "MarkedIGPT.m" for the MDFHP4.35 fitted to the Middle America Trench data set. |
-| | |
-| | |
+|MAT455IGPT.mat | Output of "MarkedIGPT.m" for the MDFHP4.55 fitted to the Middle America Trench data set.|
+|MAT475IGPT.mat | Output of "MarkedIGPT.m" for the MDFHP4.75 fitted to the Middle America Trench data set. |
 
 
 ## Versions
