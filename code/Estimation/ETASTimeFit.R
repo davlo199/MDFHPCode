@@ -70,7 +70,7 @@ x <- mpp(data=xEtas, gif=etas_gif,
 
 
 #----------------------------------------------------------
-#    Fit Model with Exponential Magnitude Distribution
+#    Fit Model without a Magnitude Distribution
 
 
 expmap <- function(y, p){
