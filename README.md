@@ -71,9 +71,9 @@ The follow table includes the file name and a brief description of its contents.
 | File Name | Description |
 | --- | --- |
 |JapanETAStimefit.RData| Output of "ETASTimeFit.R" for the Japan data set (once the fitted models were selected by hand). |
-| Japan55MDFHP.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP5.5 model fitted to the Japan data set.|
-|Japan575MDFHP.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP5.75 model fitted to the Japan data set.|
-|Japan6MDFHP.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP6 model fitted to the Japan data set.|
+| JapanMDFHP55.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP5.5 model fitted to the Japan data set.|
+|JapanMDFHP575.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP5.75 model fitted to the Japan data set.|
+|JapanMDFHP6.mat| Output of "MDFHIntensityNewSum.m" for the MDFHP6 model fitted to the Japan data set.|
 | MATETAStimefit.RData  | Output of "ETASTimeFit.R" for the Middle America Trench data set (once the fitted models were selected by hand).  |
 | MATMDFHP435.mat  | Output of "MDFHIntensityNewSum.m" for the MDFHP4.35 model fitted to the Middle America Trench data set.  |
 | MATMDFHP455.mat  | Output of "MDFHIntensityNewSum.m" for the MDFHP4.55 model fitted to the Middle America Trench data set.  |
