@@ -25,6 +25,10 @@ The function "MLapp.m" incorporates a Poincare asymptotic expansion for large ti
 Two .csv files contain the data used from Japan and the Middle America Trench within the "data" directory. These are available publicly from [USGS quake search](https://earthquake.usgs.gov/earthquakes/search/).
 For convenience they are provided here. The Japan data set is contained in the file "Japan.csv" and the Middle America Trench data set is contained in the file "MAT7623.csv".
 
+## Slurm parallelisation
+
+The scripts in code/slurm_parallel are only required for using the batch array parallelisation in the following MATLAB functions. If a parallel computer is unavailable simply set "PAR=0" for serial computing.
+
 ## Parameter Estimation
 Scripts for parameter estimation are contained in the "code/ParamEst" directory.
 
