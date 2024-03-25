@@ -69,7 +69,7 @@ Both models are compared to the empirical Poisson process in the script "MarkedI
 
 To create figures 1,2 and 3 use the script "RplotsMDFHP.R".
 
-Computation of the expected number of offspring (e.g. Equation 9) is done using the "ExpectedOffspring.m" script. 
+Computation of the expected number of offspring (e.g. Equation 9) is done using the "MiscMDFHPscripts.m" script (lines 1-13). The rest of the script is devoted to computing the mean intensity at event times for each of the subprocesses.
 
 ## Output files
 The "output" directory is split into three subdirectories: "Estimates","Resid" and "Pred" for the output files of the second run of the parameter estimation procedure, transformed residual processes and information gain outputs respectively.
