@@ -21,6 +21,20 @@ mean((Intensity(1,ismember(tvec,DiscEvents(1,2:DiscEvents(1,1)+1))))) %Mean inte
 mean((Intensity(2,ismember(tvec,DiscEvents(2,2:DiscEvents(2,1)+1))))) %Mean intensity of subprocess 2 at event times in subprocess 2
 
 
+%% Approximate probability of Pb[M \in [4.35,5.35))
+% Load MATMDFHP4.35.mat, then run the following (takes at most 30 minutes) on a desktop computer
+
+
+eps=1e-3;
+
+t1=Events2+eps;
+t2=Events2(2:end)-eps;
+tvec=sort([t1,t2,Events]);
+
+Intensity=MDFHazardRate(Nband,tvec,DiscEvents,renewal,finalP,M0);
+
+ApproximateProbability=(1-exp(-2.469))*mean(Intensity(1,:)./(sum(Intensity)))/(1-exp(-13.95));
+
 %% Auxilliary functions
 function lambda0=BackLamb(Nband,t,DiscEvents,renewal,Parameters)
 lambda0=zeros(Nband,length(t));
