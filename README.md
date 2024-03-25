@@ -42,7 +42,7 @@ Estimation the ETAS model's parameter was done using "ETASTimeFit.R" and follows
 To run it enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). Due to instabilities in the numerical optimisation some models are clearly wrong. We select the best model as the one with the greatest log-likelihood and such that $\tau_{N(T)}\approx N(T)$ which is suggestive of the model being fit correctly. 
 
 Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function. For the ETAS model 
-``Nband=1.``
+``Nband=1; Magvec=[10,M0];``
 
 ## Residual Analysis
 Scripts for residual analysis are contained in the "code/Resid&Pred" directory.
