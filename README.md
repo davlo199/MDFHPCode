@@ -34,12 +34,15 @@ Scripts for parameter estimation are contained in the "code/ParamEst" directory.
 
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
 Estimating the parameters for Japan or Middle America Trench data sets was done in two stages. First use the input files being "EstJapan.m" or "EstMAT.m" respectively with the tolerances in line 172 of "MDFHIntensityNewSum.m" set to 1e-3.
-We then use the rough minima again, with the tolerances in line 172 set to 1e-6, and change the input file values "PAR=0", "Nrand=1", and MANx0 equal to the transformed output of the first step (i.e. the unconstrained optimised parameter values which is the variable "TransEst") to save computation time. Alternatively, the code as presented in this repository will return the more accurate minima although the computational expense is greatly increased.
+We then use the rough minima again, with the tolerances in line 172 set to 1e-6, and change the input file values 
+``PAR=0; Nrand=1;`` and 
+MANx0 equal to the transformed output of the first step (i.e. the unconstrained optimised parameter values which is the variable "TransEst") to save computation time. Alternatively, the code as presented in this repository will return the more accurate minima although the computational expense is greatly increased.
 
 Estimation the ETAS model's parameter was done using "ETASTimeFit.R" and follows D. Harte closely in their cited guide. 
 To run it enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). Due to instabilities in the numerical optimisation some models are clearly wrong. We select the best model as the one with the greatest log-likelihood and such that $\tau_{N(T)}\approx N(T)$ which is suggestive of the model being fit correctly. 
 
-Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function.
+Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function. For the ETAS model 
+``Nband=1.``
 
 ## Residual Analysis
 Scripts for residual analysis are contained in the "code/Resid&Pred" directory.
@@ -60,13 +63,13 @@ For the ETAS model $p_i$ is computed in the script "PredCapETASMarked.m" with th
 
 For the MDFHP model $p_i$ is computed in the script "PredCapMDFHP.m" with the input file "PredJapan.m" or "PredMat.m" for the Japan or Middle America Trench data sets respectively.
 
-Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m" which is run by loading the output files from "PredCapETASMarked.m" or "PredCapMDFHP.m".
+Both models are compared to the empirical Poisson process in the script "MarkedIGPT.m" which can be run by loading the output files from "PredCapETASMarked.m" or "PredCapMDFHP.m".
 
 ## Miscellaneous and Plotting Scripts
 
 To create figures 1,2 and 3 use the script "RplotsMDFHP.R".
 
-To compute the expected number of offspring... **ACTUALLY INSERT!!!!!!!**
+Computation of the expected number of offspring (e.g. Equation 9) is done using the "ExpectedOffspring.m" script. 
 
 ## Output files
 The "output" directory is split into three subdirectories: "Estimates","Resid" and "Pred" for the output files of the second run of the parameter estimation procedure, transformed residual processes and information gain outputs respectively.
