@@ -232,3 +232,9 @@ abline(h=-1.36*sqrt(length(residSP2M)),col="gray",lty=2)
 abline(h=1.63*sqrt(length(residSP2M)),col="gray",lty=3)
 abline(h=-1.63*sqrt(length(residSP2M)),col="gray",lty=3)
 mtext("H",adj=0)
+
+## Compute ETAS intensity
+#load appropriate output file e.g. "JapanETAStimefit.RData"
+library("PtProcess")
+ETASint<-etas_gif(xEtas,xEtas$time,x0$params)
+mean(ETASint)
