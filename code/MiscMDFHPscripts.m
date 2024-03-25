@@ -33,7 +33,7 @@ tvec=sort([t1,t2,Events]);
 
 Intensity=MDFHazardRate(Nband,tvec,DiscEvents,renewal,finalP,M0);
 
-ApproximateProbability=(1-exp(-2.469))*mean(Intensity(1,:)./(sum(Intensity)))/(1-exp(-13.95));
+ApproximateProbability=(1-exp(-2.469))*mean(Intensity(1,:)./(sum(Intensity)))/(1-exp(-13.95)); %Equation 10
 
 %% Auxilliary functions
 function lambda0=BackLamb(Nband,t,DiscEvents,renewal,Parameters)
