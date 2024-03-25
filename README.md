@@ -91,7 +91,7 @@ The follow table includes the file name and a brief description of its contents.
 | MAT475SP1.csv| Transformed time residual process for subprocess 1 of the MDFHP4.75 fitted to the Middle America Trench data set.|
 | MAT475SP2.csv| Transformed time residual process for subprocess 2 of the MDFHP4.75 fitted to the Middle America Trench data set.|
 |JapanMDFHP55IGPT.mat |Output of "MarkedIGPT.m" for the MDFHP5.5 fitted to the Japan data set.|
-|JAPANetasIGPT.mat |Output of "MarkedIGPT.m" for the ETAS fitted to the Japan data set. **UPLOAD**|
+|JapanETASIGPT.mat |Output of "MarkedIGPT.m" for the ETAS fitted to the Japan data set.|
 |JapanMDFHP575IGPT.mat |Output of "MarkedIGPT.m" for the MDFHP5.75 fitted to the Japan data set.|
 |JapanMDFHP6IGPT.mat |Output of "MarkedIGPT.m" for the MDFHP6 fitted to the Japan data set.|
 |MAT435mdfhpIGPT.mat | Output of "MarkedIGPT.m" for the MDFHP4.35 fitted to the Middle America Trench data set. |
