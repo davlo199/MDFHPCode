@@ -1,5 +1,5 @@
 # Multidimensional Fractional Hawkes Process Manuscript, Code, Data and Results
-Code and data used for the results in "A Multidimensional Fractional Hawkes Process for Earthquakes". 
+Code, data output files and manuscript for the results in "A Multidimensional Fractional Hawkes Process for Earthquakes". 
 
 ## Compiling the C++ code
 Most scripts incorporate a C++ mex file for the "ml.m" function, all of which are contained in the directory "code/MitLef". The file "LTInversionArray.mex" should be sufficient to run the .mex file. If not follow the instructions.
@@ -23,23 +23,23 @@ The function "MLapp.m" incorporates a Poincare asymptotic expansion for large ti
 
 ## Data Files
 Two .csv files contain the data used from Japan and the Middle America Trench within the "data" directory. These are available publicly from [USGS quake search](https://earthquake.usgs.gov/earthquakes/search/).
-For convenience they are provided here. The Japan data set is contained in the file "Japan.csv" and the Middle America Trench data set is contained in the file "MAT7623.csv".
+For convenience they are provided here. The Japan data set is contained in the file "Japan.csv" and the Middle America Trench data set is contained in the file "MAT7623.csv". Data cleaning is done at the start of the scripts when the data is read in, for example lines 5-21 in "ETASTimeFit.R".
 
 ## Slurm parallelisation
 
-The scripts in code/slurm_parallel are only required for using the batch array parallelisation in the following MATLAB functions. If a parallel computer is unavailable simply set "PAR=0" for serial computing.
+The scripts in code/slurm_parallel are only required for using the batch array parallelisation in the following MATLAB functions. If a parallel computer is unavailable simply set "PAR=0" for serial computing in all of the input files.
 
 ## Parameter Estimation
 Scripts for parameter estimation are contained in the "code/ParamEst" directory.
 
 Parameter estimation for the MDFHP model is performed by using the "MDFHIntensityNewSum.m" function. 
-Estimating the parameters for Japan or Middle America Trench data sets was done in two stages. First use the input files being "EstJapan.m" or "EstMAT.m" respectively with the tolerances in line 172 of "MDFHIntensityNewSum.m" set to 1e-3.
+Estimating the parameters for the Japan or Middle America Trench data sets was done in two stages. First use the input files being "EstJapan.m" or "EstMAT.m" respectively with the tolerances in line 172 of "MDFHIntensityNewSum.m" set to 1e-3.
 We then use the rough minima again, with the tolerances in line 172 set to 1e-6, and change the input file values 
 ``PAR=0; Nrand=1;`` and 
-MANx0 equal to the transformed output of the first step (i.e. the unconstrained optimised parameter values which is the variable "TransEst") to save computation time. Alternatively, the code as presented in this repository will return the more accurate minima although the computational expense is greatly increased.
+MANx0 equal to the transformed output of the first step (i.e. the unconstrained optimised parameter values which is the variable "TransEst") to save computation time. Alternatively, the code as presented in this repository will return the more accurate minima although the computational expense is greatly increased (all estimation for the MDFHP is computationally infeasible on a desktop computer).
 
-Estimation the ETAS model's parameter was done using "ETASTimeFit.R" and follows D. Harte closely in their cited guide. 
-To run it enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, "dataname", "M0", "A" and "B"). Due to instabilities in the numerical optimisation some models are clearly wrong. We select the best model as the one with the greatest log-likelihood and such that $\tau_{N(T)}\approx N(T)$ which is suggestive of the model being fit correctly. 
+Estimation of the ETAS model's parameter was done using "ETASTimeFit.R" and follows D. Harte closely in their cited guide. 
+To run it enter in the information in the input_files for the Japan or Middle America Trench data sets verbatim (specifically, ``dataname``, ``M0``, ``A`` and ``B``). Due to instabilities in the numerical optimisation, due to poor initial values, some models are clearly wrong. We select the best model as the one with the greatest log-likelihood and such that $\tau_{N(T)}\approx N(T)$ which is suggestive of the model being fit correctly. 
 
 Estimation of the truncated exponential parameter estimates is done by using the "TruncatedExp.m" script using the same input files as for the "MDFHIntensityNewSum.m" function. For the ETAS model 
 ``Nband=1; Magvec=[10,M0];``
@@ -52,7 +52,7 @@ Calculation of the transformed time residual process for the ETAS model is detai
 library("PtProcess")
 resid<-residuals(x0)
 ```
-returns the residual process for the ETAS model fit to the Middle America Trench data set.
+returns the residual process for the ETAS model fit to the Middle America Trench data set, which can also be done for the Japan data set in a similar manner.
 
 Calculation of the transformed time residual process for the MDFHP model is done in the "MultiDimResiduals.m" script.
 
@@ -69,7 +69,7 @@ Both models are compared to the empirical Poisson process in the script "MarkedI
 
 To create figures 1,2 and 3 use the script "RplotsMDFHP.R".
 
-Computation of the expected number of offspring (e.g. Equation 9) is done using the "MiscMDFHPscripts.m" script (lines 1-13). The rest of the script is devoted to computing the mean intensity at event times for each of the subprocesses.
+Computation of the expected number of offspring (e.g. Equation 9) is done using the "MiscMDFHPscripts.m" script (lines 1-13). Furthermore, it is used to calculate the mean intensity at event times for each of the subprocesses and estimate $\mathbb{P}[M\in [4.35,5.35)]$ for discussion about the predictive performance of the MDFHP model fitted to the Middle American Trench data set (approximating Equation 10).
 
 ## Output files
 The "output" directory is split into three subdirectories: "Estimates","Resid" and "Pred" for the output files of the second run of the parameter estimation procedure, transformed residual processes and information gain outputs respectively.
