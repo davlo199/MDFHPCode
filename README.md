@@ -1,5 +1,5 @@
 # Multidimensional Fractional Hawkes Process Manuscript, Code, Data and Results
-Code, data output files and manuscript for the results in "A Multidimensional Fractional Hawkes Process for Earthquakes". 
+Code, data output files and manuscript for the results in "A Multidimensional Fractional Hawkes Process for Multiple Earthquake Mainshock Aftershock Sequences". 
 
 ## Compiling the C++ code
 Most scripts incorporate a C++ mex file for the "ml.m" function, all of which are contained in the directory "code/MitLef". The file "LTInversionArray.mex" should be sufficient to run the .mex file. If not follow the instructions.
