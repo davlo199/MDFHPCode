@@ -27,7 +27,7 @@ For convenience they are provided here. The Japan data set is contained in the f
 
 ## Slurm parallelisation
 
-The scripts in code/slurm_parallel are only required for using the batch array parallelisation in the following MATLAB functions. If a parallel computer is unavailable simply set "PAR=0" for serial computing in all of the input files.
+The scripts in code/slurm_parallel are only required for using the batch array parallelisation in the following MATLAB functions. If a parallel computer is unavailable simply set ``PAR=0`` for serial computing in all of the input files.
 
 ## Parameter Estimation
 Scripts for parameter estimation are contained in the "code/ParamEst" directory.
