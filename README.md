@@ -69,7 +69,7 @@ Both models are compared to the empirical Poisson process in the script "MarkedI
 
 To create figures 1,2 and 3 use the script "RplotsMDFHP.R".
 
-Computation of the expected number of offspring (e.g. Equation 9) is done using the "MiscMDFHPscripts.m" script (lines 1-13). Furthermore, it is used to calculate the mean intensity at event times for each of the subprocesses and estimate $\mathbb{P}[M\in [4.35,5.35)]$ for discussion about the predictive performance of the MDFHP model fitted to the Middle American Trench data set (approximating Equation 10).
+Computation of the expected number of offspring (e.g. Equation 9) is done using the "MiscMDFHPscripts.m" script (lines 1-13). Furthermore, it is used to calculate the mean intensity at event times for each of the subprocesses and estimate $\mathbb{P}[M\in [4.35,5.35)]$ for discussion about the predictive performance of the MDFHP model fitted to the Middle American Trench data set (approximating Equation 7).
 
 ## Output files
 The "output" directory is split into three subdirectories: "Estimates","Resid" and "Pred" for the output files of the second run of the parameter estimation procedure, transformed residual processes and information gain outputs respectively.
